@@ -30,9 +30,13 @@ fastify.ready((err: any) => {
   if (err) {
     throw err
   }
-  fastify.io.on("connect", (socket: any) =>
+  fastify.io.emit("hello")
+
+  fastify.io.on("connection", (socket: any) => {
     console.info("Socket connected!", socket.id)
-  )
+    socket.on("message", (msg: String) => socket.send(msg))
+    socket.on("close", (msg: String) => console.info(socket.id + " is disconnected."))
+  })
 })
 
 server(fastify, { basePath: BASE_PATH })

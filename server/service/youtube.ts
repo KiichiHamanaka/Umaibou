@@ -1,5 +1,6 @@
 import YouTubePlayer from "yt-player"
 import type { youtubeInfo } from "$/types"
+import socketioServer from "fastify-socket.io"
 
 require("jsdom-global")()
 const element = document.createElement("video-player")
@@ -18,7 +19,7 @@ const songList: youtubeInfo[] = [
   {
     videoId: "Wch3gJG2GJ4",
     songTitle: "97.9Hz",
-    songArtist: "Suspended 4th ",
+    songArtist: "Suspended 4th",
     currentTime: player.getCurrentTime() ?? 0
   }
 ]
@@ -56,7 +57,7 @@ player.on("ended", () => {
   songList.push({
     videoId: "Wch3gJG2GJ4",
     songTitle: "97.9Hz",
-    songArtist: "Suspended 4th ",
+    songArtist: "Suspended 4th",
     currentTime: player.getCurrentTime() ?? 0
   })
   songList.shift()

@@ -2,6 +2,7 @@
   <div class="container">
     <user-banner />
     <Player />
+    <Chat />
     <div>
       <form @submit.prevent="createTask">
         <input v-model="newLabel" type="text" />
@@ -32,10 +33,7 @@
 <script lang="ts">
 import Vue from "vue"
 // @ts-ignore
-import VueYoutube from "vue-youtube"
 import type { Task } from "$prisma/client"
-
-Vue.use(VueYoutube)
 
 export default Vue.extend({
   data () {
