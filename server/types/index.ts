@@ -7,3 +7,10 @@ export type UserInfo = {
 export type AuthHeader = {
   authorization: string
 }
+
+export type youtubeInfo = {
+  videoId: string
+  songTitle: string
+  songArtist: string
+  currentTime: number
+}

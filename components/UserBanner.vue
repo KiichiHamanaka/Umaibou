@@ -11,37 +11,46 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import type { UserInfo } from '$/types'
+import Vue from "vue"
+import type { UserInfo } from "$/types"
 
 export default Vue.extend({
-  data() {
+  data () {
     return {
       isLoggedIn: false,
       userInfo: {} as UserInfo,
-      token: ''
+      token: ""
     }
   },
   methods: {
-    async editIcon(e: { target: HTMLInputElement }) {
-      if (!e.target?.files?.length) return
+    async editIcon (e: { target: HTMLInputElement }) {
+      if (!e.target?.files?.length) {
+        return
+      }
 
       this.userInfo = await this.$api.user.$post({
         headers: { authorization: this.token },
         body: { icon: e.target.files[0] }
       })
     },
-    async login() {
-      const id = prompt('Enter the user id (See server/.env)')
-      const pass = prompt('Enter the user pass (See server/.env)')
-      if (!id || !pass) return alert('Login failed')
+    async login () {
+      const id = prompt("Enter the user id (See server/.env)")
+      const pass = prompt("Enter the user pass (See server/.env)")
+      if (!id || !pass) {
+        return alert("Login failed")
+      }
 
       try {
         this.token = `Bearer ${
-          (await this.$api.token.$post({ body: { id, pass } })).token
+          (await this.$api.token.$post({
+            body: {
+              id,
+              pass
+            }
+          })).token
         }`
       } catch (e) {
-        return alert('Login failed')
+        return alert("Login failed")
       }
 
       this.userInfo = await this.$api.user.$get({
@@ -49,8 +58,8 @@ export default Vue.extend({
       })
       this.isLoggedIn = true
     },
-    logout() {
-      this.token = ''
+    logout () {
+      this.token = ""
       this.isLoggedIn = false
     }
   }

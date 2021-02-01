@@ -1,4 +1,4 @@
-import { defineHooks } from './$relay'
+import { defineHooks } from "./$relay"
 
 export type AdditionalRequest = {
   user: {

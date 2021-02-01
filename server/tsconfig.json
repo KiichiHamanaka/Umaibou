@@ -4,13 +4,23 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "lib": ["dom"],
+    "lib": [
+      "dom"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "baseUrl": ".",
+    "types": [
+      "yt-player",
+      "jest"
+    ],
     "paths": {
-      "$/*": ["./*"],
-      "$prisma/*": ["./node_modules/.prisma/*"]
+      "$/*": [
+        "./*"
+      ],
+      "$prisma/*": [
+        "./node_modules/.prisma/*"
+      ]
     },
     "rootDir": ".",
     "strict": true,

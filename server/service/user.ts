@@ -1,18 +1,18 @@
-import fs from 'fs'
-import path from 'path'
-import { Multipart } from 'fastify-multipart'
-import { API_ORIGIN, BASE_PATH, USER_ID, USER_PASS } from './envValues'
+import fs from "fs"
+import path from "path"
+import { Multipart } from "fastify-multipart"
+import { API_ORIGIN, BASE_PATH, USER_ID, USER_PASS } from "./envValues"
 
-const iconsDir = 'public/icons'
+const iconsDir = "public/icons"
 const createIconURL = (name: string) =>
   `${API_ORIGIN}${BASE_PATH}/icons/${name}`
 const userInfo = {
-  name: 'sample user',
+  name: "sample user",
   icon: createIconURL(
     fs
       .readdirSync(path.resolve(iconsDir))
-      .filter((n) => n !== 'dummy.svg')
-      .pop() ?? 'dummy.svg'
+      .filter((n) => n !== "dummy.svg")
+      .pop() ?? "dummy.svg"
   )
 }
 
