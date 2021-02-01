@@ -3,6 +3,7 @@
     <user-banner />
     <Player />
     <Chat />
+    <ChatForm />
     <div>
       <form @submit.prevent="createTask">
         <input v-model="newLabel" type="text" />

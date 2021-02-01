@@ -34,8 +34,9 @@ fastify.ready((err: any) => {
 
   fastify.io.on("connection", (socket: any) => {
     console.info("Socket connected!", socket.id)
-    socket.on("message", (msg: String) => socket.send(msg))
-    socket.on("close", (msg: String) => console.info(socket.id + " is disconnected."))
+    // socket.on("MESSAGE", (msg: object) => socket.send(msg))
+    socket.on("SEND_MESSAGE", (msg: object) => fastify.io.emit("MESSAGE", msg))
+    socket.on("close", () => console.info(socket.id + " is disconnected."))
   })
 })
 

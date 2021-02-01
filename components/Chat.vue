@@ -20,7 +20,6 @@
 <script lang="ts">
 import Vue from "vue"
 import { io } from "socket.io-client"
-import { Socket } from "socket.io"
 
 export default Vue.extend({
   data () {
@@ -32,13 +31,12 @@ export default Vue.extend({
           message: "test"
         }
       ] as object[],
-      socket: null as any
+      socket: io("localhost:8080") // 最終的にvuexでグローバルステート化
     }
   },
   computed: {},
   mounted () {
-    this.socket = io()
-    this.socket.on("new-message", (msg: object) => {
+    this.socket.on("MESSAGE", (msg: object) => {
       this.messages.push(msg)
     })
   },
